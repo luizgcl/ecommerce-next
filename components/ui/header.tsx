@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { AvatarFallback, Avatar, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
+import Link from "next/link";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -85,10 +86,12 @@ const Header = () => {
               Ofertas
             </Button>
 
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <ListOrderedIcon size={16} />
-              Catálogo
-            </Button>
+            <Link href="/catalog">
+              <Button variant="outline" className="w-full justify-start gap-2">
+                <ListOrderedIcon size={16} />
+                Catálogo
+              </Button>
+            </Link>
 
           </div>
         </SheetContent>
