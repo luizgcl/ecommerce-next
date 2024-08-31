@@ -8,15 +8,17 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { AvatarFallback, Avatar, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { status, data } = useSession();
+
   const handleLoginClick = async () => {
-    await signIn()
+
   }
 
   const handleLogoutClick = async () => {
-    await signOut()
+   // logout
   }
 
   return (
@@ -60,10 +62,12 @@ const Header = () => {
           <div className="mt-4 flex flex-col gap-2">
             {
               status === 'unauthenticated' && (
-                <Button onClick={handleLoginClick} variant="outline" className="w-full justify-start gap-2">
-                  <LogInIcon size={16} />
-                  Fazer Login
-                </Button>
+                <Link href={'/login'}>
+                  <Button onClick={handleLoginClick} variant="outline" className="w-full justify-start gap-2">
+                    <LogInIcon size={16} />
+                    Fazer Login
+                  </Button>
+                </Link>
               )
             }
 
